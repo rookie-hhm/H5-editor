@@ -1,0 +1,83 @@
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin top {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@mixin bottom {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+@mixin left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@mixin right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@mixin column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin column-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@mixin column-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@mixin column-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+@mixin absCenter {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+@mixin ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@mixin ellipsis2($line) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+  word-break: keep-all;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+}
