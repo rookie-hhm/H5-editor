@@ -52,7 +52,8 @@ export default defineComponent({
           result.push(newItem)
           return result
         }
-    }, [] as NewPropsForm[])
+      }, [] as NewPropsForm[])
+    })
     return {
     }
   }
