@@ -1,13 +1,13 @@
 <template>
-  <a-latyout class="editor-wrapper">
+  <a-layout class="editor-wrapper">
    <a-layout-header class="editor-header">
       <component-control-panel @addComponent="onAddComponent"></component-control-panel>
    </a-layout-header>
    <a-layout class="editor-content">
       <!-- 组件列表 -->
-      <a-layout-sider class="panel">
+      <div class="panel">
          模板列表
-      </a-layout-sider>
+      </div>
       <!-- 画布区域 -->
       <a-layout-content class="canvas-wrapper">
          <div class="canvas-center">
@@ -26,14 +26,15 @@
          </div>
       </a-layout-content>
       <!-- 组件属性表单 -->
-      <a-layout-sider class="panel">
+      <div class="panel">
          <component-props-panel
             v-if="selectedComponent && selectedComponent.props"
-            :selectedProps="selectedComponent.props">
+            :selectedProps="selectedComponent.props"
+            @change="onPropsChange">
          </component-props-panel>
-      </a-layout-sider>
+      </div>
    </a-layout>
-  </a-latyout>
+  </a-layout>
 </template>
 
 <script lang='ts'>
@@ -70,11 +71,15 @@ export default defineComponent({
          console.log(componentInfo, 'id')
          store.commit('editor/setSelectedComponent', componentInfo)
       }
+      const onPropsChange = (data: any) => {
+         store.commit('editor/updateComponent', data)
+      }
       return {
          componentList,
          onAddComponent,
          onSelected,
-         selectedComponent
+         selectedComponent,
+         onPropsChange
       }
    }
 })
@@ -86,13 +91,18 @@ export default defineComponent({
    flex-direction: column;
    height: 100%;
    .panel {
-      background-color: #fff;
+      min-width: 250px !important;
+      max-width: 400px !important;
+      height: 100%;
+      background-color:gray;
    }
    .editor-header {
       background-color: #fff;
       line-height: auto;
    }
    .editor-content {
+      display: flex;
+      flex-direction: row;
       flex: 1;
       .canvas-wrapper {
          @include center;

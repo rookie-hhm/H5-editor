@@ -1,7 +1,7 @@
 // import { v4 as uuidv4 } from 'uuid'
 import { Module } from 'vuex'
 import { GlobalProps } from '../types'
-
+import { find } from 'lodash-es'
 export interface ComponentProps { // 所有的组件数据
   id: string
   name: string
@@ -33,7 +33,7 @@ const editor: Module<EditorProps, GlobalProps> = {
     components: []
   },
   getters: {
-    selectedComponent: (state) => state.components.find(item => item.id === state.selectedId) // 当前选中的组件
+    selectedComponent: (state) => find(state.components, item => item.id === state.selectedId) // 当前选中的组件
   },
   mutations: {
     addComponent (state: EditorProps, data: ComponentProps) { // 添加组件
@@ -45,7 +45,13 @@ const editor: Module<EditorProps, GlobalProps> = {
       console.log(id, elem)
       state.selectedId = id
       state.selectedElem = elem
-      console.log(state.components.find(item => item.id === state.selectedId), 'selected')
+      console.log(find(state.components, item => item.id === state.selectedId), 'selected')
+    },
+    updateComponent (state, data) {
+      const selectedComponent = find(state.components, item => item.id === state.selectedId)
+      const { key, value } = data
+      selectedComponent && (selectedComponent.props[key] = value)
+      console.log(key, value, 'changed')
     },
     deleteComponent (state: EditorProps, id: string) { // 删除组件
       const index = state.components.findIndex(item => item.id === id)

@@ -17,7 +17,7 @@ export type PropsForm = {
 const pxToNumberHandler: PropsMap = {
   component: 'a-input-number',
   beforeTransform: (v: string) => parseInt(v),
-  afterTransform: (e: number) => e ? `${e}px` : '',
+  afterTransform: (e: number) => e ? `${e}px` : ''
 }
 
 export const propsMap: PropsForm = {
@@ -25,7 +25,7 @@ export const propsMap: PropsForm = {
     description: '文本',
     component: 'a-textarea',
     attrs: { rows: 3 },
-    afterTransform: (e: any) => e.target.value,
+    afterTransform: (e: any) => e.target.value
   },
   fontSize: {
     description: '字号',
@@ -34,9 +34,9 @@ export const propsMap: PropsForm = {
   lineHeight: {
     description: '行高',
     component: 'a-slider',
-    attrs: { min: 0, max: 3, step: 0.1 },
+    attrs: { min: 0, max: 100, step: 0.1 },
     beforeTransform: (v: string) => parseFloat(v),
-    afterTransform: (e: number) => e.toString(),
+    afterTransform: (e: number) => e.toString()
   },
   // fontFamily: {
   //   component: 'a-select',
@@ -53,6 +53,6 @@ export const propsMap: PropsForm = {
   },
   color: {
     component: 'color-picker',
-    description: '字体颜色'
+    description: '颜色'
   }
 }
