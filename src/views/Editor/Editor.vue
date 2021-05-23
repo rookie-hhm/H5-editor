@@ -7,6 +7,7 @@
       <!-- 组件列表 -->
       <div class="panel">
          模板列表
+         <FontIcon></FontIcon>
       </div>
       <!-- 画布区域 -->
       <a-layout-content class="canvas-wrapper">
@@ -43,6 +44,7 @@ import { useStore } from 'vuex'
 import { ComponentProps, selectedComponent } from '@/store/modules/editor'
 import ComponentControlPanel from './components/ComponentControlPanel.vue'
 import ComponentPropsPanel from './components/ComponentPropsPanel.vue'
+import FontIcon from '@/components/FontIcon.vue'
 import ComponentWrapper from '@/components/ComponentWrapper.vue'
 import RText from '@/components/RText.vue'
 import { GlobalProps } from '@/store/types'
@@ -52,7 +54,8 @@ export default defineComponent({
       ComponentControlPanel,
       ComponentPropsPanel,
       ComponentWrapper,
-      RText
+      RText,
+      FontIcon
    },
    setup () {
       const store = useStore<GlobalProps>()

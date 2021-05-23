@@ -15,7 +15,7 @@ module.exports = {
       }
     }
   },
-  chainWebpack(config) {
+  chainWebpack (config) {
     // set svg-sprite-loader
     config.module
       .rule('svg')

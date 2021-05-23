@@ -18,9 +18,9 @@ export interface CommonComponentProps {
   borderRadius: string
   // shadow and opacity
   boxShadow: string
-  opacity: string 
+  opacity: string
   actionType: string
-  url: string 
+  url: string
 }
 
 export interface TextProps extends CommonComponentProps {
@@ -35,6 +35,5 @@ export interface TextProps extends CommonComponentProps {
   color: string
   backgroundColor: string
 }
-
 
 export type ComponentPropsType = TextProps

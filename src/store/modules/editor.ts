@@ -50,7 +50,14 @@ const editor: Module<EditorProps, GlobalProps> = {
     updateComponent (state, data) {
       const selectedComponent = find(state.components, item => item.id === state.selectedId)
       const { key, value } = data
-      selectedComponent && (selectedComponent.props[key] = value)
+      if (selectedComponent) {
+        if (key === 'font') {
+          const{ key, value: fontValue } = value
+          selectedComponent.props[key] = fontValue
+        } else {
+          selectedComponent.props[key] = value
+        }
+      }
       console.log(key, value, 'changed')
     },
     deleteComponent (state: EditorProps, id: string) { // 删除组件

@@ -7,7 +7,7 @@
           :is="item.component"
           :value="item.value"
           v-bind="item.attrs"
-          v-on="item.on"
+          v-on="item.events"
         >
         </component>
       </div>
@@ -18,10 +18,9 @@
 <script lang='ts'>
 import { computed, defineComponent, PropType } from 'vue'
 import { ComponentPropsType } from '@/types/componentPropsType'
-import { reduce } from 'lodash'
+import { reduce } from 'lodash-es'
 import { propsMap } from '@/types/propsMap'
 import ColorPicker from '@/components/ColorPicker.vue'
-// import { reduce } from 'lodash-es'
 interface NewPropsForm {
   component: string // 组件件
   description?: string // 提示语
@@ -29,7 +28,7 @@ interface NewPropsForm {
   attrs?: { [key: string]: any } // 组件属性
   propName: string // 绑定组件的value的属性值
   eventName: string // 更改组件时向外发送的事件名字
-  on: { [eventName: string]: (e: any) => void }
+  events: { [eventName: string]: (e: any) => void }
 }
 export default defineComponent({
   name: 'ComponentPropsPanel',
@@ -56,7 +55,7 @@ export default defineComponent({
             value: beforeTransform ? beforeTransform(value) : value,
             propName,
             eventName,
-            on: {
+            events: {
               [eventName]: (e: any) => { emit('change', { key, value: afterTransform ? afterTransform(e) : e }) }
             }
           }
