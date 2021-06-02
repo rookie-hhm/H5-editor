@@ -5,9 +5,10 @@
    </a-layout-header>
    <a-layout class="editor-content">
       <!-- 组件列表 -->
-      <div class="panel">
-         模板列表
-         <FontIcon></FontIcon>
+      <div class="template panel">
+         <component-template-panel @addComponent="onAddComponent"></component-template-panel>
+         <!-- <component-control-panel></component-control-panel> -->
+         <!-- <FontIcon></FontIcon> -->
       </div>
       <!-- 画布区域 -->
       <a-layout-content class="canvas-wrapper">
@@ -27,7 +28,7 @@
          </div>
       </a-layout-content>
       <!-- 组件属性表单 -->
-      <div class="panel">
+      <div class="panel form-props">
          <component-props-panel
             v-if="selectedComponent && selectedComponent.props"
             :selectedProps="selectedComponent.props"
@@ -44,18 +45,24 @@ import { useStore } from 'vuex'
 import { ComponentProps, selectedComponent } from '@/store/modules/editor'
 import ComponentControlPanel from './components/ComponentControlPanel.vue'
 import ComponentPropsPanel from './components/ComponentPropsPanel.vue'
+import ComponentTemplatePanel from './components/ComponentTemplatePanel.vue'
 import FontIcon from '@/components/FontIcon.vue'
 import ComponentWrapper from '@/components/ComponentWrapper.vue'
+import Upload from '@/components/Upload.vue'
 import RText from '@/components/RText.vue'
+import RImage from '@/components/RImage.vue'
 import { GlobalProps } from '@/store/types'
 export default defineComponent({
    name: 'Editor',
    components: {
       ComponentControlPanel,
       ComponentPropsPanel,
+      ComponentTemplatePanel,
       ComponentWrapper,
       RText,
-      FontIcon
+      RImage,
+      FontIcon,
+      Upload
    },
    setup () {
       const store = useStore<GlobalProps>()
@@ -97,7 +104,13 @@ export default defineComponent({
       min-width: 250px !important;
       max-width: 400px !important;
       height: 100%;
-      background-color:gray;
+      background-color: #fff;
+      // &.template {
+      //    box-shadow: 1px 0 5px #222;
+      // }
+      // &.form-props {
+      //    box-shadow: -1px 0 2px #222;
+      // }
    }
    .editor-header {
       background-color: #fff;
@@ -109,12 +122,13 @@ export default defineComponent({
       flex: 1;
       .canvas-wrapper {
          @include center;
+         background-color: #f0f2f5;
          .canvas-center {
             position: relative;
             min-width: 375px;
-            min-height: 20vh;
+            min-height: 667px;
             max-height: 80vh;
-            background-color: gold;
+            background-color: #fff;
          }
       }
    }

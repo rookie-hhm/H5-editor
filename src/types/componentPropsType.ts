@@ -36,4 +36,9 @@ export interface TextProps extends CommonComponentProps {
   backgroundColor: string
 }
 
-export type ComponentPropsType = TextProps
+export interface ImageProps extends CommonComponentProps {
+  src: string
+}
+export type ComponentPropsType = TextProps & ImageProps
+
+export type ComponentType = TextProps | ImageProps

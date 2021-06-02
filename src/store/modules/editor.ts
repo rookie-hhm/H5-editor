@@ -13,17 +13,10 @@ export interface EditorProps {
   selectedId: string // 当前选中的ID
   components: ComponentProps[]
 }
-
 export interface selectedComponent {
   id: string,
   elem: HTMLElement
 }
-// const textData = [
-//   { id: uuidv4(), name: 'div', attrs: { fontSize: '12px' } },
-//   { id: uuidv4(), name: 'div', attrs: {} },
-//   { id: uuidv4(), name: 'div', attrs: {} },
-//   { id: uuidv4(), name: 'div', attrs: {} }
-// ]
 
 const editor: Module<EditorProps, GlobalProps> = {
   namespaced: true,
@@ -52,7 +45,7 @@ const editor: Module<EditorProps, GlobalProps> = {
       const { key, value } = data
       if (selectedComponent) {
         if (key === 'font') {
-          const{ key, value: fontValue } = value
+          const { key, value: fontValue } = value
           selectedComponent.props[key] = fontValue
         } else {
           selectedComponent.props[key] = value

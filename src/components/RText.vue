@@ -1,6 +1,6 @@
 <template>
   <div class="text-wrapper">
-    <component :is="tag" :style="style">
+    <component :is="tag" :style="styleProps" class="text">
       {{ textContent }}
     </component>
   </div>
@@ -8,13 +8,14 @@
 
 <script lang='ts'>
 import { defineComponent } from 'vue'
-import { mergeStyleProps } from '@/utils/utils'
+import { mergeStyleProps } from '@/utils/helper'
 import { textDefaultProps } from '@/types/componentProps'
-import { getStyleProps } from '@/hooks/common'
-const defaultProps = mergeStyleProps(textDefaultProps) // 解析props的定义
+import { TextProps } from '@/types/componentPropsType'
+import useCommon from '@/hooks/useCommon'
+const defaultProps = mergeStyleProps<TextProps>(textDefaultProps) // 解析props的定义
 
 export default defineComponent({
-  name: 'RText',
+  name: 'r-text',
   props: {
     tag: {
       type: String,
@@ -23,15 +24,20 @@ export default defineComponent({
     ...defaultProps
   },
   setup (props) {
-    const style = getStyleProps(props, ['actionType', 'url', 'textContent'])
-    console.log(style, 'style')
+    const { styleProps, handleClick } = useCommon(props, ['actionType', 'url', 'textContent'])
+    console.log(styleProps, 'style')
     return {
-      style
+      styleProps,
+      handleClick
     }
   }
 })
 </script>
 
 <style lang='scss' scoped>
-
+.text-wrapper {
+  .text {
+    white-space: pre-wrap;
+  }
+}
 </style>

@@ -1,4 +1,4 @@
-import { CommonComponentProps, TextProps } from './componentPropsType'
+import { CommonComponentProps, TextProps, ImageProps } from './componentPropsType'
 
 export const commonDefaultProps: CommonComponentProps = {
   position: 'relative',
@@ -39,4 +39,8 @@ export const textDefaultProps: TextProps = {
   ...commonDefaultProps
 }
 
-export type ComponentProps = TextProps
+export const ImageDefaultProps: ImageProps = {
+  src: '',
+  ...commonDefaultProps
+}
+export type ComponentProps = TextProps & ImageProps
