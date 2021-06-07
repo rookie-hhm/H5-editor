@@ -41,6 +41,7 @@ export const textDefaultProps: TextProps = {
 
 export const ImageDefaultProps: ImageProps = {
   src: '',
+  originSrc: '',
   ...commonDefaultProps
 }
 export type ComponentProps = TextProps & ImageProps

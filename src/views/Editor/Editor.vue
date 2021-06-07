@@ -108,9 +108,9 @@ export default defineComponent({
       // &.template {
       //    box-shadow: 1px 0 5px #222;
       // }
-      // &.form-props {
-      //    box-shadow: -1px 0 2px #222;
-      // }
+      &.form-props {
+         padding: 10px 10px 0;
+      }
    }
    .editor-header {
       background-color: #fff;

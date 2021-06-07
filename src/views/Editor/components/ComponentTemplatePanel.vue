@@ -43,6 +43,7 @@ export default defineComponent({
           id: uuidv4(),
           name: 'r-image',
           props: {
+            originSrc: data.url,
             src: data.url,
             width,
             height,

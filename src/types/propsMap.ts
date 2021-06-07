@@ -54,5 +54,9 @@ export const propsMap: PropsForm = {
   color: {
     component: 'color-picker',
     description: '颜色'
+  },
+  src: {
+    component: 'image-processer',
+    propName: 'src'
   }
 }

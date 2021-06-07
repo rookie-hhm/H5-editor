@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import 'animate.css'
+import 'cropperjs/dist/cropper.css'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 import '@/style/global.scss'

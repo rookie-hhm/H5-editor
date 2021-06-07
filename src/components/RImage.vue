@@ -2,7 +2,7 @@
   <a-image
     :style="styleProps"
     :src="src"
-    @click.stop="handleClick"
+    @click="handleClick"
   ></a-image>
 </template>
 
@@ -19,7 +19,7 @@ export default defineComponent({
   },
   name: 'r-image',
   setup (props) {
-    const { styleProps, handleClick } = useCommon(props, ['actionType', 'url', 'src'])
+    const { styleProps, handleClick } = useCommon(props, ['actionType', 'url', 'src', 'originSrc'])
     return {
       styleProps,
       handleClick

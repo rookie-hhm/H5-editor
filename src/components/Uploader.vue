@@ -14,13 +14,7 @@
 
 <script lang='ts'>
 import { defineComponent } from 'vue'
-import Upload, { FileInfo } from './Upload.vue'
-interface ResponseData {
-  response?: any
-  error?: any
-  file: File,
-  fileList: FileInfo[]
-}
+import Upload, { ResponseData } from './Upload.vue'
 export default defineComponent({
   components: {
     Upload

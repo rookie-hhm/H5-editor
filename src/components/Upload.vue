@@ -5,9 +5,9 @@
         <a-button type="primary" disabled>正在上传</a-button>
       </slot>
       <slot name="loaded" v-else-if="fileList.length && isUploaded">
-        <a-button type="primary">上传完毕</a-button>
+        <a-button type="primary">点击上传</a-button>
       </slot>
-      <slot name="slot" v-else>
+      <slot name="default" v-else>
         <a-button type="primary">点击上传</a-button>
       </slot>
     </div>
@@ -33,6 +33,12 @@ export interface FileInfo {
   response?: any
   url?: string
 }
+export interface ResponseData {
+  response?: any
+  error?: any
+  file: File,
+  fileList: FileInfo[]
+}
 export default defineComponent({
   props: {
     action: {
@@ -56,6 +62,7 @@ export default defineComponent({
     const isDragOver = ref<boolean>(false)
     const onClick = () => {
       if (inputRef.value) {
+        inputRef.value.value = ''
         inputRef.value.click()
       }
     }
@@ -79,10 +86,6 @@ export default defineComponent({
           //   fileList.value.splice(deleteIndex, 1)
           // }
           emit('error', { error, file: file.raw, fileList: fileList.value })
-        }).finally(() => {
-          if (inputRef.value) {
-            inputRef.value.value = ''
-          }
         })
       }
     }

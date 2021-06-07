@@ -38,6 +38,7 @@ export interface TextProps extends CommonComponentProps {
 
 export interface ImageProps extends CommonComponentProps {
   src: string
+  originSrc: string
 }
 export type ComponentPropsType = TextProps & ImageProps
 

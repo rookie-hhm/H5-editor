@@ -5,6 +5,9 @@ import { find } from 'lodash-es'
 export interface ComponentProps { // 所有的组件数据
   id: string
   name: string
+  layerName: string
+  isLocked: boolean
+  isHidden: boolean
   props: { [key: string]: any }
 }
 

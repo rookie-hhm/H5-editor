@@ -1,7 +1,7 @@
 <template>
   <div class="props-panel-wrapper">
     <div class="form-props-item" v-for="(item, index) in newPropsList" :key="index">
-      <span class="description">{{ item.description }}</span>
+      <span class="description" v-if="item.description">{{ item.description }}</span>
       <div class="component-wrapper">
         <component
           :is="item.component"
@@ -21,6 +21,7 @@ import { ComponentPropsType } from '@/types/componentPropsType'
 import { reduce } from 'lodash-es'
 import { propsMap } from '@/types/propsMap'
 import ColorPicker from '@/components/ColorPicker.vue'
+import ImageProcesser from '@/components/ImageProcesser.vue'
 interface NewPropsForm {
   component: string // 组件件
   description?: string // 提示语
@@ -33,7 +34,8 @@ interface NewPropsForm {
 export default defineComponent({
   name: 'ComponentPropsPanel',
   components: {
-    ColorPicker
+    ColorPicker,
+    ImageProcesser
   },
   props: {
     selectedProps: { // 选中组件的属性值
@@ -43,7 +45,7 @@ export default defineComponent({
   },
   emits: ['change'],
   setup (props, { emit }) {
-    console.log(props.selectedProps)
+    console.log(props.selectedProps, 'selectedprops')
     const newPropsList = computed(() => {
      return reduce(props.selectedProps, (result, value, key) => {
         const newKey = key as keyof ComponentPropsType
@@ -58,6 +60,13 @@ export default defineComponent({
             events: {
               [eventName]: (e: any) => { emit('change', { key, value: afterTransform ? afterTransform(e) : e }) }
             }
+          }
+          if (newKey === 'src') { // 图片的特殊逻辑
+            if (!newItem.attrs) {
+              newItem.attrs = {}
+            }
+            (newItem.attrs!).originSrc = newItem.value
+            console.log(newItem.attrs, 'src')
           }
           result.push(newItem)
         }
