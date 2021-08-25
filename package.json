@@ -17,6 +17,7 @@
     "core-js": "^3.6.5",
     "cropperjs": "^1.5.11",
     "flush-promises": "^1.0.2",
+    "hotkeys-js": "^3.8.7",
     "lodash-es": "^4.17.21",
     "uuid": "^8.3.2",
     "vue": "^3.0.0",

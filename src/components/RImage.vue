@@ -19,7 +19,7 @@ export default defineComponent({
   },
   name: 'r-image',
   setup (props) {
-    const { styleProps, handleClick } = useCommon(props, ['actionType', 'url', 'src', 'originSrc'])
+    const { styleProps, handleClick } = useCommon(props, ['actionType', 'url', 'src', 'originSrc', 'top', 'left'])
     return {
       styleProps,
       handleClick

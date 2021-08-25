@@ -13,8 +13,9 @@
 
 <script lang='ts'>
 import { defineComponent, PropType } from 'vue'
-const defaulList = ['#fff', '#ed6051', '#e8a862', '#f7ca4f', '#5fcba3', '#75c6f4', '#5b90ec', '#6f75e7', '#505973', '#000000']
+const defaulList: string[] = ['#fff', '#ed6051', '#e8a862', '#f7ca4f', '#5fcba3', '#75c6f4', '#5b90ec', '#6f75e7', '#505973', '#000000']
 export default defineComponent({
+  name: 'ColorPicker',
   props: {
     value: {
       type: String,
