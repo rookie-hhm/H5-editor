@@ -3,7 +3,6 @@ export interface CommonComponentProps {
   position: string
   left: string
   top: string
-  right: string
   // size
   width: string
   height: string
@@ -40,6 +39,7 @@ export interface ImageProps extends CommonComponentProps {
   src: string
   originSrc: string
 }
+
 export type ComponentPropsType = TextProps & ImageProps
 
 export type ComponentType = TextProps | ImageProps

@@ -1,13 +1,13 @@
 import { CommonComponentProps, TextProps, ImageProps } from './componentPropsType'
 
+// 通用组件属性
 export const commonDefaultProps: CommonComponentProps = {
-  position: 'relative',
+  position: 'absolute',
   left: '0',
   top: '50%',
-  right: '0',
   // size
   width: '375px',
-  height: '',
+  height: '20px',
   paddingLeft: '0px',
   paddingRight: '0px',
   paddingTop: '0px',
@@ -18,13 +18,14 @@ export const commonDefaultProps: CommonComponentProps = {
   borderWidth: '0',
   borderRadius: '0',
   // shadow and opacity
-  boxShadow: '0 0 0 #000000',
+  boxShadow: '0 0 0 0 #000',
   opacity: '1',
   // actions
   actionType: '',
   url: ''
 }
 
+// 文本特有属性
 export const textDefaultProps: TextProps = {
   textContent: '请输入文本信息',
   fontSize: '12px',
@@ -39,9 +40,18 @@ export const textDefaultProps: TextProps = {
   ...commonDefaultProps
 }
 
+// 图片特有属性
 export const ImageDefaultProps: ImageProps = {
-  src: '',
-  originSrc: '',
+  src: '', // 图片地址
+  originSrc: '', // 图片源地址
   ...commonDefaultProps
 }
+
+export const ComponentType2Name: { [key: string]: any } = {
+  text: '文字',
+  image: '图片',
+  video: '音频',
+  audio: '视频'
+}
+
 export type ComponentProps = TextProps & ImageProps

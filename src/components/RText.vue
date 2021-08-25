@@ -1,9 +1,7 @@
 <template>
-  <div class="text-wrapper">
-    <component :is="tag" :style="styleProps" class="text">
-      {{ textContent }}
-    </component>
-  </div>
+  <component :is="tag" :style="styleProps" class="text">
+    {{ textContent }}
+  </component>
 </template>
 
 <script lang='ts'>
@@ -35,9 +33,7 @@ export default defineComponent({
 </script>
 
 <style lang='scss' scoped>
-.text-wrapper {
-  .text {
-    white-space: pre-wrap;
-  }
+.text {
+  white-space: pre-wrap;
 }
 </style>

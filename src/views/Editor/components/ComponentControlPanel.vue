@@ -13,11 +13,24 @@
 import { defineComponent, reactive } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { templateList } from '@/template/h5'
+import { ImageDefaultProps, textDefaultProps } from '@/types/componentProps'
+// interface componentData {
+//   id: string
+//   name: string,
+//   layerName: string
+//   isLocked: boolean
+//   isHidden: boolean
+//   props: { [key: string]: any }
+// }
+interface templateData {
+  name: string,
+  iconClass: string
+}
 export default defineComponent({
   name: 'ComponentControlPanel',
   setup (props, { emit }) {
     const panelList = reactive(templateList)
-    const addComponent = (item: any) => {
+    const addComponent = (item: templateData) => {
       console.log(item, 'item')
       const { iconClass } = item
       let data = {}
@@ -25,11 +38,28 @@ export default defineComponent({
         data = {
           id: uuidv4(),
           name: 'r-text',
+          layerName: '111',
+          isLocked: false,
+          isHidden: false,
           props: {
-            textContent: '123123213',
+            ...textDefaultProps,
+            width: '100px',
+            height: '40px',
+            textContent: '双击编辑文字',
             fontSize: '14px',
             lineHeight: '1.2',
             color: 'blue'
+          }
+        }
+      } else if (iconClass === 'upload') {
+        data = {
+          id: uuidv4(),
+          name: 'r-image',
+          layerName: '222',
+          isLocked: false,
+          isHidden: false,
+          props: {
+            ...ImageDefaultProps
           }
         }
       }
